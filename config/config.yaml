@@ -1,4 +1,6 @@
 # config.yaml
-
-target_url: https://www.example.com
-max_depth: 2
+websites:
+  - target_url: https://www.example.com
+    description: "yahoo economic"
+  - target_url: https://www.nba.com
+    description: "gogo"
