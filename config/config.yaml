@@ -1,0 +1,4 @@
+# config.yaml
+
+target_url: https://www.example.com
+max_depth: 2
