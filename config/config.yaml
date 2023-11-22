@@ -1,6 +1,5 @@
 # config.yaml
 websites:
-  - target_url: https://www.example.com
-    description: "yahoo economic"
-  - target_url: https://www.nba.com
-    description: "gogo"
+  - target_url: https://www.ptt.cc/bbs/Beauty/index.html
+    description: "ptt Beauty"
+

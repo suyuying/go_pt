@@ -4,27 +4,28 @@ import (
 	"fmt"
 	// "github.com/gocolly/colly/v2"
 	"webcrawl/config"
+	"webcrawl/utils"
 )
 
+type Website struct {
+	TargetURL   string `yaml:"target_url"`
+	Description string `yaml:"description"`
+}
+type Config struct {
+	Websites []Website `yaml:"websites"`
+}
+
 func main() {
+	var config_web config.Config
 	// Load configuration from config.yaml file
-	configss:= config.LoadConfig("config/config.yaml")
-	fmt.Println(configss)
-	// if err != nil {
-	// 	log.Fatal("Error loading config:", err)
-	// }
+	err := config.LoadConfig("config/config.yaml", &config_web)
+	if err != nil {
+		fmt.Println("Error loading configuration:", err)
+		return
+	}
+	for element_number, website := range config_web.Websites {
+		fmt.Printf("URL: %s, Description: %s,%d\n", website.TargetURL, website.Description, element_number)
+		utils.Crawl(website.TargetURL)
+	}
 
-	// // Create a new crawler instance
-	// crawler := utils.NewCrawler(config)
-
-	// // Start crawling the target URL
-	// err = crawler.Crawl(config.TargetURL)
-	// if err != nil {
-	// 	log.Fatal("Error crawling:", err)
-	// }
-
-	// // Print the crawled items
-	// for _, item := range crawler.Items {
-	// 	fmt.Printf("%s - %s\n", item.Title, item.URL)
-	// }
 }
